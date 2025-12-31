@@ -1,103 +1,106 @@
-import Image from "next/image";
+"use client"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import PhotoVideoGallery from "@/components/photo-video-gallery"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-rose-50">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-amber-100">
+        <div className="container mx-auto px-4 py-4">
+          <Tabs defaultValue="early-years" className="w-full">
+            <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 bg-amber-50/50">
+              <TabsTrigger value="early-years" className="text-sm md:text-base">
+                Our Early Years
+              </TabsTrigger>
+              <TabsTrigger value="family-years" className="text-sm md:text-base">
+                Our Family's Early Years
+              </TabsTrigger>
+              <TabsTrigger value="want-to-know" className="text-sm md:text-base">
+                Things We Want You to Know
+              </TabsTrigger>
+            </TabsList>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* Hero Section */}
+            <div className="py-16 text-center">
+              <h1 className="text-6xl md:text-8xl font-serif italic text-amber-900 mb-12">Our Story</h1>
+
+              {/* Two Photos */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12 px-4">
+                <div className="aspect-[3/4] bg-gradient-to-br from-amber-200 to-rose-200 rounded-lg shadow-lg overflow-hidden">
+                  <img
+                    src="/romantic-couple-portrait-vintage.jpg"
+                    alt="Our Story - Photo 1"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="aspect-[3/4] bg-gradient-to-br from-rose-200 to-amber-200 rounded-lg shadow-lg overflow-hidden">
+                  <img
+                    src="/couple-together-happy-moments.jpg"
+                    alt="Our Story - Photo 2"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Explanation and Video Links */}
+              <div className="max-w-3xl mx-auto px-4 space-y-6">
+                <p className="text-lg leading-relaxed text-gray-700 text-balance">
+                  Welcome to our story - a collection of memories, moments, and milestones that have shaped our journey
+                  together. Here you'll find photos, videos, and stories from the different chapters of our lives. Each
+                  section holds special memories we want to share with you.
+                </p>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <a
+                    href="#video-1"
+                    className="text-amber-700 hover:text-amber-900 font-medium underline underline-offset-4"
+                  >
+                    Watch Our Wedding Video
+                  </a>
+                  <span className="text-gray-400">•</span>
+                  <a
+                    href="#video-2"
+                    className="text-amber-700 hover:text-amber-900 font-medium underline underline-offset-4"
+                  >
+                    Our First Year Together
+                  </a>
+                  <span className="text-gray-400">•</span>
+                  <a
+                    href="#video-3"
+                    className="text-amber-700 hover:text-amber-900 font-medium underline underline-offset-4"
+                  >
+                    Family Highlights
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Tab Content with Galleries */}
+            <div className="container mx-auto px-4 pb-16">
+              <TabsContent value="early-years" className="mt-0">
+                <PhotoVideoGallery
+                  title="Our Early Years"
+                  description="The beginning of our journey together - first dates, adventures, and falling in love."
+                />
+              </TabsContent>
+
+              <TabsContent value="family-years" className="mt-0">
+                <PhotoVideoGallery
+                  title="Our Family's Early Years"
+                  description="Growing our family, precious first moments, and building our home together."
+                />
+              </TabsContent>
+
+              <TabsContent value="want-to-know" className="mt-0">
+                <PhotoVideoGallery
+                  title="Things We Want You to Know"
+                  description="Special memories, life lessons, and moments that define who we are as a family."
+                />
+              </TabsContent>
+            </div>
+          </Tabs>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </nav>
     </div>
-  );
+  )
 }
