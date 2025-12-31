@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import PhotoVideoGallery from "@/components/photo-video-gallery"
 
@@ -14,7 +15,7 @@ export default function Home() {
                 Our Early Years
               </TabsTrigger>
               <TabsTrigger value="family-years" className="text-sm md:text-base">
-                Our Family's Early Years
+                Our Family&apos;s Early Years
               </TabsTrigger>
               <TabsTrigger value="want-to-know" className="text-sm md:text-base">
                 Things We Want You to Know
@@ -27,18 +28,20 @@ export default function Home() {
 
               {/* Two Photos */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12 px-4">
-                <div className="aspect-[3/4] bg-gradient-to-br from-amber-200 to-rose-200 rounded-lg shadow-lg overflow-hidden">
-                  <img
+                <div className="aspect-[3/4] bg-gradient-to-br from-amber-200 to-rose-200 rounded-lg shadow-lg overflow-hidden relative">
+                  <Image
                     src="/romantic-couple-portrait-vintage.jpg"
                     alt="Our Story - Photo 1"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
-                <div className="aspect-[3/4] bg-gradient-to-br from-rose-200 to-amber-200 rounded-lg shadow-lg overflow-hidden">
-                  <img
+                <div className="aspect-[3/4] bg-gradient-to-br from-rose-200 to-amber-200 rounded-lg shadow-lg overflow-hidden relative">
+                  <Image
                     src="/couple-together-happy-moments.jpg"
                     alt="Our Story - Photo 2"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               </div>
@@ -47,7 +50,7 @@ export default function Home() {
               <div className="max-w-3xl mx-auto px-4 space-y-6">
                 <p className="text-lg leading-relaxed text-gray-700 text-balance">
                   Welcome to our story - a collection of memories, moments, and milestones that have shaped our journey
-                  together. Here you'll find photos, videos, and stories from the different chapters of our lives. Each
+                  together. Here you&apos;ll find photos, videos, and stories from the different chapters of our lives. Each
                   section holds special memories we want to share with you.
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center">
